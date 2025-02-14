@@ -2,6 +2,7 @@ package org.example.fx;
 import java.util.Scanner;
 public class CountInt {
 
+    //Main Method
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int size = 3;
