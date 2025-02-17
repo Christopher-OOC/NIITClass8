@@ -1,17 +1,42 @@
 package org.example.fx;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner input = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        // Prompt the user to enter values for a, b, and c
+        System.out.print("Enter the value for a: ");
+        double a = input.nextDouble();
+
+        System.out.print("Enter the value for b: ");
+        double b = input.nextDouble();
+
+        System.out.print("Enter the value for c: ");
+        double c = input.nextDouble();
+
+        // Calculate the discriminant
+        double discriminant = b * b - 4 * a * c;
+
+        // Check the value of the discriminant
+        if (discriminant > 0) {
+            // Two distinct real roots
+            double r1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            double r2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            System.out.printf("The equation has two real roots: %.2f and %.2f%n", r1, r2);
+        } else if (discriminant == 0) {
+            // One real root (repeated)
+            double r = (-b) / (2 * a);
+            System.out.printf("The equation has one real root: %.2f%n", r);
+        } else {
+            String realPart = String.format("%.2f", (-b / (2 * a)));
+            String imagenaryPart = String.format("%.2f", (Math.sqrt(Math.abs(discriminant)) / (2 * a)));
+            String r1 = realPart + " + " + imagenaryPart + "i";
+            String r2 = realPart + " - " + imagenaryPart + "i";
+            System.out.printf("The equation has two imaginary roots: %s and %s", r1, r2);
         }
+
+        input.close();
     }
 }
